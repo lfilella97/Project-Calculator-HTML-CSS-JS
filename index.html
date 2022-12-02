@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="left">
+               <p>Calculator</p> 
+            </div>
+            <div class="right">
+                <button class="headbutton" >-</a></button>
+                <button class="headbutton" >Square</a></button> 
+                <button class="headbutton" >X</a></button>
+            </div>
+        </nav>
+        <div class="screen"  id="textoSuperiorPantalla">
+
+        </div>
+        <div class="screen" id="textoInferiorPantalla">
+            0
+        </div>
+    </header>
+    <main>
+        <div class="item set" onclick="location.reload()" id="restart">C</div> 
+        <div class="item set" onclick="singClick('CE')" id="CE">CE</div>
+        <div class="item set" onclick="singClick('^')" id="square">X^2</div>
+        <div class="item set" onclick="singClick('/')" id="divide">÷</div>
+        <div class="item number" onclick="numberClick(7)" id="seven">7</div> 
+        <div class="item number" onclick="numberClick(8)" id="eight">8</div>
+        <div class="item number" onclick="numberClick(9)"id="nine">9</div>
+        <div class="item set" onclick="singClick('*')" id="multiplication">×</div>
+        <div class="item number" onclick="numberClick(4)" id="four">4</div> 
+        <div class="item number" onclick="numberClick(5)" id="five">5</div>
+        <div class="item number" onclick="numberClick(6)" id="six">6</div>
+        <div class="item set" onclick="singClick('-')" id="less">-</div>
+        <div class="item number" onclick="numberClick(1)" id="one">1</div> 
+        <div class="item number" onclick="numberClick(2)" id="two">2</div>
+        <div class="item number" onclick="numberClick(3)" id="three">3</div>
+        <div class="item set" onclick="singClick('+')" id="plus">+</div>
+        <div class="item set" onclick="singClick('invert')" id="plusLess">+/-</div>
+        <div class="item number" onclick="numberClick(0)" id="zero">0</div> 
+        <div class="item number" onclick= "singClick(',')" id="comma">,</div>
+        <div class="item set" onclick= "singClick('=')" id="result">=</div>
+    </main>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+</html>
