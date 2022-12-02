@@ -16,7 +16,7 @@ const numberClick = (number) =>{
     calculator.provisionalNumber.push(number);
     showOnInferiorScreen(+calculator.provisionalNumber.join(''));
 };
-const singClick = (sing) => {debugger
+const singClick = (sing) => {
     if(sing === 'CE'){
         resetProvisionalNumber()
         return;
