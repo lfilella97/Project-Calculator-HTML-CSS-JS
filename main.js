@@ -1,39 +1,37 @@
-
-
-textoInferiorPantalla=document.getElementById("textoInferiorPantalla")
-textoSuperiorPantalla=document.getElementById("textoSuperiorPantalla")
-textoInferiorPantalla.innerHTML = []
-textoSuperiorPantalla.innerHTML = []
+textoInferiorPantalla=document.getElementById("textoInferiorPantalla");
+textoSuperiorPantalla=document.getElementById("textoSuperiorPantalla");
+textoInferiorPantalla.innerHTML = [];
+textoSuperiorPantalla.innerHTML = [];
 
 const calculator = {
     provisionalNumber: [],
     number: 0,
     result: 0,
     sign: undefined,
-}
+};
+
 const clearEntryClick = () => {
     calculator.provisionalNumber = [0];
-    refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''))
-}
+    refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''));
+};
 const squareClick = (sign) =>{console.table(calculator);
-    defineNumber()
-    getResult(calculator.sign)
-    defineNumberAndSign(sign)
-    getResult(sign)
-    calculator.sign = undefined
-    calculator.provisionalNumber = calculator.result.toString().split('')
+    defineNumber();
+    getResult(calculator.sign);
+    defineNumberAndSign(sign);
+    getResult(sign);
+    calculator.sign = undefined;
+    calculator.provisionalNumber = calculator.result.toString().split('');
     refreshScreens(calculator.result, calculator.number); 
 };
 const invertClick = (sign) => {
-    defineNumber()
-    getResult(calculator.sign)
-    defineNumberAndSign(sign)
-    getResult(sign)
+    defineNumber();
+    getResult(calculator.sign);
+    defineNumberAndSign(sign);
+    getResult(sign);
     calculator.sign = undefined
-    calculator.provisionalNumber= calculator.result.toString().split('')
+    calculator.provisionalNumber= calculator.result.toString().split('');
     refreshScreens(calculator.result, calculator.number); 
-}
-
+};
 const commaclick = () => {
     if (calculator.provisionalNumber.indexOf('.') === -1){
         calculator.provisionalNumber.push('.');
@@ -41,35 +39,42 @@ const commaclick = () => {
 };
 const numberClick = (number) =>{
     calculator.provisionalNumber.push(number);
-    refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''));console.table(calculator)
+    refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''));console.table(calculator);
 };
+const operatorClick = (sign) => {
+    processData(sign);
+    refreshScreens(calculator.result, calculator.number);
+};
+const equalClick = (sign) => {
+    processData(sign);
+    refreshScreens('=' , calculator.result);
+};
+
 const refreshScreens = (superior, inferior) =>{
     showOnSuperiorScreen(superior);
     showOnInferiorScreen(inferior);
 };
 const showOnSuperiorScreen = (superior) => {
-    textoSuperiorPantalla.innerHTML = superior
+    textoSuperiorPantalla.innerHTML = superior;
 };
 const showOnInferiorScreen = (inferior) => {
-    textoInferiorPantalla.innerHTML = inferior
+    textoInferiorPantalla.innerHTML = inferior;
 };
-const operatorClick = (sign) => {
-    processData(sign)
-    refreshScreens(calculator.result, calculator.number);
-};
-const equalClick = (sign) => {
-    processData(sign)
-    refreshScreens('=' , calculator.result)
-};
+
 const processData = (sign) =>{
-    defineNumber()
-    getResult(calculator.sign)
-    defineNumberAndSign(sign)
+    defineNumber();
+    getResult(calculator.sign);
+    defineNumberAndSign(sign);
 };
 const defineNumber = () =>{
     calculator.number = calculator.provisionalNumber.join('');
     calculator.provisionalNumber = [];
 };
+const defineNumberAndSign = (sign) => {
+    calculator.sign = sign;
+    defineNumber();
+};
+
 const getResult = (sign) =>{
  switch (sign){
     case '+':
@@ -95,52 +100,40 @@ const getResult = (sign) =>{
         break;
     };
 };
-const defineNumberAndSign = (sign) => {
-    calculator.sign = sign
-    defineNumber()
-};
-
 
 const plus = () => {
     (calculator.result += +calculator.number);
-    fixNumber()
+    fixNumber();
     return calculator.result
-}
+};
 const minus = () =>{
     (calculator.result -= +calculator.number);
-    fixNumber()
-    return calculator.result
-}
+    fixNumber();
+    return calculator.result;
+};
 const multiplier = () => {
     (calculator.result *= +calculator.number);
-    fixNumber()
-    return calculator.result
-}
+    fixNumber();
+    return calculator.result;
+};
 const division = () =>{
     (calculator.result /= +calculator.number);
-    fixNumber()
-    return calculator.result
-}
+    fixNumber();
+    return calculator.result;
+};
 const square = () => {
     (calculator.result *= calculator.result);
-    fixNumber()
-    return calculator.result
-
-}
+    fixNumber();
+    return calculator.result;
+};
 const invert = () => {
     (calculator.result = 0 - calculator.result);
-    fixNumber()
-    return calculator.result
-}
+    fixNumber();
+    return calculator.result;
+};
 const fixNumber = () => {
     if (!Number.isInteger(calculator.result)){
         calculator.result = (calculator.result).toFixed(2)
     };
-}
-
-
-/*
-commaclick(',')
-invertClick('invert')
-*/
+};
 
