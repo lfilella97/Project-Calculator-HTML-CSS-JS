@@ -22,6 +22,7 @@ const squareClick = (sign) =>{console.table(calculator);
     calculator.sign = undefined;
     calculator.provisionalNumber = calculator.result.toString().split('');
     refreshScreens(calculator.result, calculator.number); 
+    equalClick('=')
 };
 const invertClick = (sign) => {
     defineNumber();
@@ -30,7 +31,8 @@ const invertClick = (sign) => {
     getResult(sign);
     calculator.sign = undefined
     calculator.provisionalNumber= calculator.result.toString().split('');
-    refreshScreens(calculator.result, calculator.number); 
+    refreshScreens(calculator.result, calculator.number);
+    equalClick('=')
 };
 const commaclick = () => {
     if (calculator.provisionalNumber.indexOf('.') === -1){
@@ -78,7 +80,7 @@ const defineNumberAndSign = (sign) => {
 const getResult = (sign) =>{
  switch (sign){
     case '+':
-        plus()
+        plus();
         break;
     case '-':
         minus();
@@ -102,27 +104,27 @@ const getResult = (sign) =>{
 };
 
 const plus = () => {
-    (calculator.result += +calculator.number);
+    calculator.result = ((+calculator.result) + (+calculator.number));
     fixNumber();
-    return calculator.result
+    return calculator.result;
 };
 const minus = () =>{
-    (calculator.result -= +calculator.number);
+    calculator.result = ((+calculator.result) - (+calculator.number));
     fixNumber();
     return calculator.result;
 };
 const multiplier = () => {
-    (calculator.result *= +calculator.number);
+    calculator.result = ((+calculator.result) * (+calculator.number));
     fixNumber();
     return calculator.result;
 };
 const division = () =>{
-    (calculator.result /= +calculator.number);
+    calculator.result = ((+calculator.result) / (+calculator.number));
     fixNumber();
     return calculator.result;
 };
 const square = () => {
-    (calculator.result *= calculator.result);
+    ((calculator.result) *= calculator.result);
     fixNumber();
     return calculator.result;
 };
@@ -133,7 +135,6 @@ const invert = () => {
 };
 const fixNumber = () => {
     if (!Number.isInteger(calculator.result)){
-        calculator.result = (calculator.result).toFixed(2)
+        calculator.result = (+calculator.result).toFixed(2)
     };
 };
-
