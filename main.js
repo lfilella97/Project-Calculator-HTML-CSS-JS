@@ -1,7 +1,104 @@
-textoInferiorPantalla=document.getElementById("textoInferiorPantalla");
-textoSuperiorPantalla=document.getElementById("textoSuperiorPantalla");
-textoInferiorPantalla.innerHTML = [];
-textoSuperiorPantalla.innerHTML = [];
+textoInferiorPantalla=document.querySelector(".textoInferiorPantalla");
+textoSuperiorPantalla=document.querySelector(".textoSuperiorPantalla");
+textoInferiorPantalla.innerHTML = [0];
+textoSuperiorPantalla.innerHTML = [0];
+
+const clearEntryButton = document.querySelector(".CE");
+clearEntryButton.addEventListener("click", () => {
+    calculator.provisionalNumber = [0];
+    refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''));
+});
+const commaButton = document.querySelector(".comma");
+commaButton.addEventListener("click", () => {
+    if (calculator.provisionalNumber.indexOf('.') === -1){
+        calculator.provisionalNumber.push('.');
+    };
+});
+const numberButtonNine = document.querySelector(".nine");
+numberButtonNine.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonNine.innerHTML)
+});
+const numberButtonEigth = document.querySelector(".eight");
+numberButtonEigth.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonEigth.innerHTML)
+});
+const numberButtonSeven = document.querySelector(".seven");
+numberButtonSeven.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonSeven.innerHTML)
+});
+const numberButtonSix = document.querySelector(".six");
+numberButtonSix.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonSix.innerHTML)
+});
+const numberButtonFive = document.querySelector(".five");
+numberButtonFive.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonFive.innerHTML)
+});
+const numberButtonFour = document.querySelector(".four");
+numberButtonFour.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonFour.innerHTML)
+});
+const numberButtonThree = document.querySelector(".three");
+numberButtonThree.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonThree.innerHTML)
+});
+const numberButtonTwo = document.querySelector(".two");
+numberButtonTwo.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonTwo.innerHTML)
+});
+const numberButtonOne = document.querySelector(".one");
+numberButtonOne.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonOne.innerHTML)
+});
+const numberButtonZero = document.querySelector(".zero");
+numberButtonZero.addEventListener("click",(event)=>{
+    event.preventDefault();
+    getNumber(numberButtonZero.innerHTML)
+});
+const squareButton = document.querySelector(".square");
+squareButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    squareClick('^')
+});
+const invertButton = document.querySelector(".invert");
+invertButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    invertClick('invert')
+});
+const plusButton = document.querySelector(".plus");
+plusButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    operatorClick('+')
+});
+const minusButton = document.querySelector(".minus");
+minusButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    operatorClick('-')
+});
+const multiplicationButton = document.querySelector(".multiplication");
+multiplicationButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    operatorClick('*')
+});
+const divideButton = document.querySelector(".divide");
+divideButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    operatorClick('/')
+});
+const equalButton = document.querySelector(".equal");
+equalButton.addEventListener("click",(event)=>{
+    event.preventDefault();
+    equalClick('=')
+});
 
 const calculator = {
     provisionalNumber: [],
@@ -10,10 +107,6 @@ const calculator = {
     sign: undefined,
 };
 
-const clearEntryClick = () => {
-    calculator.provisionalNumber = [0];
-    refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''));
-};
 const squareClick = (sign) =>{console.table(calculator);
     defineNumber();
     getResult(calculator.sign);
@@ -24,6 +117,7 @@ const squareClick = (sign) =>{console.table(calculator);
     refreshScreens(calculator.result, calculator.number); 
     equalClick('=')
 };
+
 const invertClick = (sign) => {
     defineNumber();
     getResult(calculator.sign);
@@ -34,15 +128,12 @@ const invertClick = (sign) => {
     refreshScreens(calculator.result, calculator.number);
     equalClick('=')
 };
-const commaclick = () => {
-    if (calculator.provisionalNumber.indexOf('.') === -1){
-        calculator.provisionalNumber.push('.');
-    };
-};
-const numberClick = (number) =>{
+
+const getNumber = (number) =>{
     calculator.provisionalNumber.push(number);
     refreshScreens(+calculator.result, +calculator.provisionalNumber.join(''));console.table(calculator);
 };
+
 const operatorClick = (sign) => {
     processData(sign);
     refreshScreens(calculator.result, calculator.number);
@@ -50,6 +141,26 @@ const operatorClick = (sign) => {
 const equalClick = (sign) => {
     processData(sign);
     refreshScreens('=' , calculator.result);
+};
+
+const processData = (sign) =>{
+    defineNumber();
+    getResult(calculator.sign);
+    defineNumberAndSign(sign);
+};
+
+const defineNumber = () =>{
+    calculator.number = calculator.provisionalNumber.join('');
+    calculator.provisionalNumber = [];
+};
+const defineNumberAndSign = (sign) => {
+    calculator.sign = sign;
+    defineNumber();
+};
+const fixNumber = () => {
+    if (!Number.isInteger(calculator.result)){
+        calculator.result = (+calculator.result).toFixed(2)
+    };
 };
 
 const refreshScreens = (superior, inferior) =>{
@@ -61,20 +172,6 @@ const showOnSuperiorScreen = (superior) => {
 };
 const showOnInferiorScreen = (inferior) => {
     textoInferiorPantalla.innerHTML = inferior;
-};
-
-const processData = (sign) =>{
-    defineNumber();
-    getResult(calculator.sign);
-    defineNumberAndSign(sign);
-};
-const defineNumber = () =>{
-    calculator.number = calculator.provisionalNumber.join('');
-    calculator.provisionalNumber = [];
-};
-const defineNumberAndSign = (sign) => {
-    calculator.sign = sign;
-    defineNumber();
 };
 
 const getResult = (sign) =>{
@@ -133,8 +230,8 @@ const invert = () => {
     fixNumber();
     return calculator.result;
 };
-const fixNumber = () => {
-    if (!Number.isInteger(calculator.result)){
-        calculator.result = (+calculator.result).toFixed(2)
-    };
-};
+
+
+
+
+

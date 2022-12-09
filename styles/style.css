@@ -34,14 +34,14 @@ button{
     font-size:  28px;
     margin: 2px;
 }
-#textoSuperiorPantalla{
+.textoSuperiorPantalla{
     word-break:keep-all;
     height: 50px;
     padding: 10px;
     font-size: 40px;
 }
-#textoInferiorPantalla{
-    padding: 0px 15px 15px 15px;
+.textoInferiorPantalla{
+    padding: 10px 15px 15px 15px;
     height: 50px;
 }
 main{

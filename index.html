@@ -10,40 +10,32 @@
 <body>
     <header>
         <nav>
-            <div class="left">
-               <p class="left">Calculator</p> 
-            </div>
-            <div class="right">
-            </div>
+            <div class="left"><p class="left">Calculator</p> </div>
         </nav>
-        <div class="screen"  id="textoSuperiorPantalla">
-
-        </div>
-        <div class="screen" id="textoInferiorPantalla">
-            
-        </div>
+        <div class="screen textoSuperiorPantalla"></div>
+        <div class="screen textoInferiorPantalla"></div>
     </header>
     <main>
-        <div class="item set" onclick="location.reload()" id="restart">C</div> 
-        <div class="item set" onclick="clearEntryClick('CE')" id="CE">CE</div>
-        <div class="item set" onclick="squareClick('^')" id="square">X^2</div>
-        <div class="item set" onclick="operatorClick('/')" id="divide">÷</div>
-        <div class="item number" onclick="numberClick(7)" id="seven">7</div> 
-        <div class="item number" onclick="numberClick(8)" id="eight">8</div>
-        <div class="item number" onclick="numberClick(9)"id="nine">9</div>
-        <div class="item set" onclick="operatorClick('*')" id="multiplication">×</div>
-        <div class="item number" onclick="numberClick(4)" id="four">4</div> 
-        <div class="item number" onclick="numberClick(5)" id="five">5</div>
-        <div class="item number" onclick="numberClick(6)" id="six">6</div>
-        <div class="item set" onclick="operatorClick('-')" id="less">-</div>
-        <div class="item number" onclick="numberClick(1)" id="one">1</div> 
-        <div class="item number" onclick="numberClick(2)" id="two">2</div>
-        <div class="item number" onclick="numberClick(3)" id="three">3</div>
-        <div class="item set" onclick="operatorClick('+')" id="plus">+</div>
-        <div class="item set" onclick="invertClick('invert')" id="plusLess">+/-</div>
-        <div class="item number" onclick="numberClick(0)" id="zero">0</div> 
-        <div class="item number" onclick= "commaclick(',')" id="comma">,</div>
-        <div class="item set" onclick= "equalClick('=')" id="result">=</div>
+        <div class="item set restart" onclick="location.reload()">C</div> 
+        <div class="item set CE">CE</div>
+        <div class="item set square">X^2</div>
+        <div class="item set divide">÷</div>
+        <div class="item number seven">7</div> 
+        <div class="item number eight">8</div>
+        <div class="item number nine">9</div>
+        <div class="item set multiplication">×</div>
+        <div class="item number four">4</div> 
+        <div class="item number five">5</div>
+        <div class="item number six">6</div>
+        <div class="item set minus">-</div>
+        <div class="item number one">1</div> 
+        <div class="item number two">2</div>
+        <div class="item number three">3</div>
+        <div class="item set plus">+</div>
+        <div class="item set invert">+/-</div>
+        <div class="item number zero">0</div> 
+        <div class="item number comma">,</div>
+        <div class="item set equal">=</div>
     </main>
     <script type="text/javascript" src="main.js"></script>
 </body>
