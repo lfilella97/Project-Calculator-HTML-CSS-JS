@@ -12,11 +12,13 @@ const commaButton = document.querySelector(".comma");
 commaButton.addEventListener("click", () => {
     if (calculator.provisionalNumber.indexOf('.') === -1){
         calculator.provisionalNumber.push('.');
+        showOnInferiorScreen(calculator.provisionalNumber.join(''));
     };
 });
 const numberButtonNine = document.querySelector(".nine");
 numberButtonNine.addEventListener("click",(event)=>{
     event.preventDefault();
+    console.log(event)
     getNumber(numberButtonNine.innerHTML)
 });
 const numberButtonEigth = document.querySelector(".eight");
@@ -168,9 +170,19 @@ const refreshScreens = (superior, inferior) =>{
     showOnInferiorScreen(inferior);
 };
 const showOnSuperiorScreen = (superior) => {
+    if(Number.isFinite){
+        if(superior.toString().split('').length > 16){
+            superior = "ErrorTooLong"
+        };
+       };
     textoSuperiorPantalla.innerHTML = superior;
 };
 const showOnInferiorScreen = (inferior) => {
+   if(Number.isFinite){
+    if(inferior.toString().split('').length > 11){
+        inferior = "ErrorTooLong"
+    };
+   };
     textoInferiorPantalla.innerHTML = inferior;
 };
 
@@ -230,8 +242,3 @@ const invert = () => {
     fixNumber();
     return calculator.result;
 };
-
-
-
-
-

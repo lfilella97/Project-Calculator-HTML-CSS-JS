@@ -4,6 +4,7 @@ html{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgb(73, 73, 73);
 }
 body{
     height: 540px;
@@ -11,23 +12,22 @@ body{
 }
 header{
     width: 100%;
+    color:whitesmoke
 }
 nav{
     display:flex;
     justify-content: space-between;
-    background-color: #302828;
+    background-color: #3f0c0c;
 }
 button{
     cursor: pointer;
 }
 .screen{
-    background-color: #3b3b3b;
-    
+    background-color: #707070;
     display: flex;
     justify-content: right;
     align-items: flex-end;
     font-size: 55px;
-   
     overflow-y: hidden;
 }
 .left{
@@ -52,7 +52,7 @@ main{
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 .item{
-    background-color: #1b1616;
+    background-color: #3f0c0c;
     color: white;
     cursor: pointer;
     box-shadow: 0px 0px 3px rgb(0, 0, 0);
@@ -62,11 +62,11 @@ main{
 }
 .item:hover{
     box-shadow: 0px 0px 15px rgb(0, 0, 0);
-    background-color: #3b3b3b;
+    background-color: #2d0909;
 
 }
 .set{
-    background-color: #302828;
+    background-color: #950000;
 }
 
 
