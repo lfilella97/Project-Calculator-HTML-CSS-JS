@@ -172,7 +172,7 @@ const refreshScreens = (superior, inferior) =>{
 const showOnSuperiorScreen = (superior) => {
     if(Number.isFinite){
         if(superior.toString().split('').length > 16){
-            superior = "ErrorTooLong"
+            superior = superior.toString().split('')[0] + "x10^" + superior.toString().split('').length
         };
        };
     textoSuperiorPantalla.innerHTML = superior;
@@ -180,7 +180,7 @@ const showOnSuperiorScreen = (superior) => {
 const showOnInferiorScreen = (inferior) => {
    if(Number.isFinite){
     if(inferior.toString().split('').length > 11){
-        inferior = "ErrorTooLong"
+        inferior = inferior.toString().split('')[0] + "x10^" + inferior.toString().split('').length
     };
    };
     textoInferiorPantalla.innerHTML = inferior;
